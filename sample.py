@@ -3,14 +3,15 @@ sys.path.append("components")
 from dropdowns import dropdown_menu, menu_item, divider, dropdown_submenu
 from button_groups import zm_button, button_group, button_toolbar, button_group_vertical
 from button_dropdowns import button_dropdown, button_dropup, split_button_dropdown, split_button_dropup
-from nav import tabs, active_tab, tab, disabled_tab, disabled_unclickable_tab, pills, stacked_tabs, stacked_pills, tab_navigation, tab_container, tab_pane, tab_navigation_left, tab_navigation_right, tab_navigation_below
+from nav import tabs, active_element, element, disabled_element, disabled_unclickable_element, pills, stacked_tabs, stacked_pills, tab_navigation, tab_container, tab_pane, tab_navigation_left, tab_navigation_right, tab_navigation_below
+from navbar import navbar, brand, nav_group, nav_divider, form_left, form_right, search_input, search_form_left, search_form_right, navbar_text
 
 print basic_template(
     tab_navigation_below(
         tabs(
-            active_tab("Home", "#tab1"),
-            tab("About", "#tab2"),
-            tab("Stuff", "#tab3"),
+            active_element("Home", "#tab1"),
+            element("About", "#tab2"),
+            element("Stuff", "#tab3"),
         ),
         tab_container(
             tab_pane("#tab1", p("Home!")),
