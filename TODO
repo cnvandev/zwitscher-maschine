@@ -1,0 +1,5 @@
+TODO
+================================================================================
+
+- Provide ability to "merge" attributes to every ZM tag, so we can easily add
+new classes to existing tags, etc.
