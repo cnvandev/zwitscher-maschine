@@ -10,6 +10,8 @@ THUMBNAIL_CLASS = "thumbnail"
 THUMBNAILS_CLASS = THUMBNAIL_CLASS + "s"
 
 def thumbnails(*thumbnails):
+    ''' Returns the HTML code for a container for thumbnail elements. '''
+
     return ul(
         *thumbnails,
         **{"class": THUMBNAILS_CLASS}
@@ -17,6 +19,9 @@ def thumbnails(*thumbnails):
 
 
 def thumbnail(span, *elements):
+    ''' Returns the HTML code for a single thumbnail element that can contain
+    any HTML. Can contain one or multiple elements if needed. '''
+
     inner_elements = ""
     if len(elements) > 1:
         inner_elements = div(
