@@ -8,6 +8,7 @@ from dynamo import *
 ALERT_CLASS = "alert"
 ALERT_BLOCK_CLASS = ALERT_CLASS + "-block"
 CLOSE_CLASS = "close"
+BUTTON_CLASS = "button"
 
 ALERT_ERROR_CLASS = ALERT_CLASS + "-error"
 ALERT_SUCCESS_CLASS = ALERT_CLASS + "-success"
@@ -28,37 +29,37 @@ def long_alert(title, message):
 def success_alert(title, message):
     ''' Returns the HTML code for a small, green success message. '''
 
-    return alert_factory(ALERT_SUCCESS_CLASS, False, title, message)
+    return alert_factory(" ".join([ALERT_CLASS, ALERT_SUCCESS_CLASS]), False, title, message)
 
 
 def long_success_alert(title, message):
     ''' Returns the HTML code for a long, green success message. '''
 
-    return alert_factory(ALERT_SUCCESS_CLASS, True, title, message)
+    return alert_factory(" ".join([ALERT_CLASS, ALERT_SUCCESS_CLASS]), True, title, message)
 
 
 def error_alert(title, message):
     ''' Returns the HTML code for a small, red error message. '''
 
-    return alert_factory(ALERT_SUCCESS_CLASS, False, title, message)
+    return alert_factory(" ".join([ALERT_CLASS, ALERT_ERROR_CLASS]), False, title, message)
 
 
 def long_error_alert(title, message):
     ''' Returns the HTML code for a long, red error message. '''
 
-    return alert_factory(ALERT_SUCCESS_CLASS, True, title, message)
+    return alert_factory(" ".join([ALERT_CLASS, ALERT_ERROR_CLASS]), True, title, message)
 
 
 def info_alert(title, message):
     ''' Returns the HTML code for a small, light-blue info message. '''
 
-    return alert_factory(ALERT_SUCCESS_CLASS, False, title, message)
+    return alert_factory(" ".join([ALERT_CLASS, ALERT_INFO_CLASS]), False, title, message)
 
 
 def long_info_alert(title, message):
     ''' Returns the HTML code for a long, light-blue info message. '''
 
-    return alert_factory(ALERT_SUCCESS_CLASS, True, title, message)    
+    return alert_factory(" ".join([ALERT_CLASS, ALERT_INFO_CLASS]), True, title, message)    
 
 
 def alert_factory(type_class, is_long, title, message):

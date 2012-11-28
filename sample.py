@@ -16,5 +16,14 @@ from thumbnails import *
 from typography import *
 
 print basic_template(
-    close()
+    h1("Testing Alerts"),
+    p("I'm testing out an alert system, let's see if it works!"),
+    alert("This is a Random Title", "This is a random message."),
+    long_alert("This is a Random Title", "This is a random message."),
+    success_alert("This is a Random Title", "This is a random message."),
+    long_success_alert("This is a Random Title", "This is a random message."),
+    error_alert("This is a Random Title", "This is a random message."),
+    long_error_alert("This is a Random Title", "This is a random message."),
+    info_alert("This is a Random Title", "This is a random message."),
+    long_info_alert("This is a Random Title", "This is a random message.")
 )
