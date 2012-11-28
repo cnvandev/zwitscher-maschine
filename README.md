@@ -26,11 +26,12 @@ combined with other strings or other Dynamo HTML functions or, I don't know,
 whatever you want.
 
 *What's with the weird name? It's the name of one of my favourite paintings, a
-piece by Paul Klee called "Die Zwitscher-Machine," a cute-but-eerie-looking
-watercolour depiction of a machine made up of a crank attached to a set of
-mechanical birds. You can almost imagine the mechanical tweeting and the jerky,
-automaton-ish movement that would happen if you could reach in and start turning
-the crank, like a Tim Burton music box. Since every software library needs to be
-named by a pun of some kind, and since it's based on both Twitter Bootstrap and
-Dynamo (a fancy word for "generator"), Zwitscher-Maschine ("Twittering Machine")
-is a decent fit.*
+piece by Paul Klee called "Die Zwitscher-Machine"
+(http://www.moma.org/collection/object.php?object_id=37347). It's a
+cute-but-eerie-looking watercolour depiction of a machine made up of a crank
+attached to a set of mechanical birds. You can almost imagine the mechanical
+tweeting and the jerky, automaton-ish movement that would happen if you could
+reach in and start turning the crank, like a Tim Burton music box. Since every
+software library needs to be named by a pun of some kind, and since it's based
+on both Twitter Bootstrap and Dynamo (a fancy word for "generator"),
+Zwitscher-Maschine ("Twittering Machine") is a decent fit.*
