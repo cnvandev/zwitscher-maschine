@@ -23,7 +23,65 @@ as a convenient use of the "Alerts" component (see
 http://twitter.github.com/bootstrap/components.html#alerts for working examples)
 which is one of many you have available. They all return strings, so they can be
 combined with other strings or other Dynamo HTML functions or, I don't know,
-whatever you want.
+whatever you want. Combining more complex things:
+
+    basic_template(
+        tab_navigation_below(
+            tabs(
+                active_element("Home", "#tab1"),
+                element("About", "#tab2"),
+                element("Stuff", "#tab3"),
+            ),
+            tab_container(
+                tab_pane("#tab1", p("Home!")),
+                tab_pane("#tab2", p("About!")),
+                tab_pane("#tab3", p("Stuff!"))
+            )
+        )
+    )
+
+you end up with:
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Bootstrap 101 Template</title>
+            <!--Bootstrap-->
+            <link media="screen" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap.min.css" rel="stylesheet" />
+        </head>
+        <body>
+            <div class="container">
+                <div class="tabbable tab-below">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab1">Home</a>
+                        </li>
+                        <li>
+                            <a href="#tab2">About</a>
+                        </li>
+                        <li>
+                            <a href="#tab3">Stuff</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="#tab1">
+                            <p>Home!</p>
+                        </div>
+                        <div class="tab-pane" id="#tab2">
+                            <p>About!</p>
+                        </div>
+                        <div class="tab-pane" id="#tab3">
+                            <p>Stuff!</p>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://code.jquery.com/jquery-latest.js"></script>
+                <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+            </div>
+        </body>
+    </html>
+
+It needs a lot of work, all additions are appreciated.
 
 *What's with the weird name? It's the name of one of my favourite paintings, a
 piece by Paul Klee called "Die Zwitscher-Machine"
