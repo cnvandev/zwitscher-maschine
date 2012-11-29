@@ -6,6 +6,8 @@ A Twitter Bootstrap HTML generator. Using the functional style I use for Dynamo
 use Twitter Bootstrap elements. Right now it's fairly bare-bones, I'm not sure
 what the API should really look like, and it's really simple as it is right now.
 
+Usage
+-----
 In any case, you can quickly output HTML code for Twitter Bootstrap-based sites
 using this library. Behold!
 
@@ -83,6 +85,8 @@ you end up with:
 
 It needs a lot of work, all additions are appreciated.
 
+Name
+----
 *What's with the weird name? It's the name of one of my favourite paintings, a
 piece by Paul Klee called "Die Zwitscher-Machine"
 (http://www.moma.org/collection/object.php?object_id=37347). It's a
