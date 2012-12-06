@@ -12,23 +12,27 @@ from dynamo import *
 BREADCRUMBS_CLASS = "breadcrumb"
 DIVIDER_CLASS = "divider"
 
-def breadcrumbs(*elements):
+def breadcrumbs(*crumbs):
     ''' Returns the HTML code for a breadcrumb listing. Fill with crumb() and
     divider() elements (see below in this class.) '''
 
     return ul(
-        *elements,
-        **{"class": BREADCRUMBS_CLASS}
+        merge_attributes({"class": BREADCRUMBS_CLASS}, *crumbs),
+        *crumbs[1:]
     )
 
 
-def divider():
+def divider(*content):
     ''' Returns a divider class for use to split breadcrumbs. It's a slash. '''
 
-    return "&nbsp;" + span("/", **{"class": DIVIDER_CLASS})
+    return "&nbsp;" + span(merge_attributes({"class": DIVIDER_CLASS}, *content), "/")
 
-def crumb(text, url):
+def crumb(text, url, *content):
     ''' Returns a single "crumb" in a breadcrumb group, taking text and a URL to
     point it all to. '''
 
-    return li(a(text, href=url))
+    return li(
+        merge_attributes(*content),
+        a(text, href=url),
+        *content[1:]
+    )

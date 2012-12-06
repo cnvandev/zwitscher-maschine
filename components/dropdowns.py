@@ -8,17 +8,19 @@ from dynamo import *
 MENU_CLASS = "dropdown-menu"
 SUBMENU_CLASS = "dropdown-submenu"
 
+DIVIDER_CLASS = "divider"
+
 def dropdown_menu(*items):
     ''' Returns the HTML code for a dropdown menu containing the given
     menu items. '''
 
     return ul(
-        *items,
-        **{
+        merge_attributes({
             "class": MENU_CLASS,
             "role": "menu",
             "aria-labelledBy": "dropdownMenu",
-        }
+        }),
+        *items
     )
 
 
@@ -31,15 +33,14 @@ def menu_item(text, url):
 def divider():
     ''' Returns the HTML code for divider in a dropdown menu. '''
 
-    return li("", Class="divider")
+    return li({"class": DIVIDER_CLASS}, "")
 
-def dropdown_submenu(text, url, *items):
+def submenu(text, url, *items):
     ''' Returns the HTML code for a submenu in a dropdown menu. The submenu
     can contain its own items just like a regular menu. '''
 
     return li(
+        merge_attributes({"class": SUBMENU_CLASS}, *items),
         a(text, tabindex="-1", href=url),
-        dropdown_menu(*items),
-        **{
-            "class": SUBMENU_CLASS,
-        })
+        dropdown_menu(*items[1:])
+    )

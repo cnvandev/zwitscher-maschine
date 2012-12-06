@@ -1,5 +1,18 @@
 TODO
 ================================================================================
 
-- Provide ability to "merge" attributes to every ZM tag, so we can easily add
-new classes to existing tags, etc.
+- Find out why sample.py is being given a dict randomly - something isn't being
+popped. Find it!
+- A module to get Twitter Bootstrap for you for automation purposes. Should
+just copy/modify code from Cruddy to do so.
+- Code up the examples at http://twitter.github.com/bootstrap/getting-started.html#examples
+and see if you can come up with any examples so you can streamline the code
+generation.
+- Convert every function to use the new first-argument-is-a-hash system, create
+convenience functions that return common attribute patterns (example:
+hint_text("Hint!") for hint text passed to search inputs.)
+- A "Sectioned page" like the Bootstrap site. Give it a set of titles and
+content and it generates something with a navbar for you.
+- Work with the Javascript stuff. Maybe create (sigh) a Python Javascript
+generator and work that into Zwitscher-maschine. Maybe a JQuery-specific
+generator.

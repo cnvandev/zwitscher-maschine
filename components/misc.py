@@ -9,6 +9,8 @@ WELL_CLASS = "well"
 LARGE_WELL_CLASS = WELL_CLASS + "-large"
 SMALL_WELL_CLASS = WELL_CLASS + "-small"
 
+CONTAINER_CLASS = "container"
+
 CLOSE_CLASS = "close"
 
 def well(*content):
@@ -48,3 +50,17 @@ def close():
         "&times;",
         **{"class": CLOSE_CLASS, "href": "#"}
     )
+
+
+def container(*content):
+    ''' Returns the HTML code for a basic div container. '''
+
+    return div(
+        *content,
+        **{"class": CONTAINER_CLASS}
+    )
+
+
+def component_scripts(scripts):
+
+    return *[script(src="../assets/js/bootstrap-" + component_script + ".js") for component_script in scripts]

@@ -20,3 +20,4 @@ def basic_template(*content):
             )
         )
     )
+

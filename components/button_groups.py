@@ -1,6 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
+from common import merge_attributes
 
 # Convenience methods for generating Twitter Bootstrap button group HTML code.
 # http://twitter.github.com/bootstrap/components.html#buttonGroup for examples.
@@ -15,32 +16,29 @@ def zm_button(text):
     ''' Returns the HTML code for a Twitter Bootstrap-ready button. '''
 
     return button(
-        text,
-        **{"class": BUTTON_CLASS}
+        merge_attributes({"class": BUTTON_CLASS}, *content),
+        *content[1:]
     )
 
-def button_group(*buttons):
+def button_group(*content):
     ''' Returns the HTML code for a button group that contains the given
     buttons. '''
 
     return div(
-        *buttons,
-        **{"class": BUTTON_GROUP_CLASS}
+        merge_attributes({"class": BUTTON_GROUP_CLASS}, *content)
+        *content[1:]
     )
 
-def button_toolbar(*buttons):
+def button_toolbar(*content):
     ''' Returns the HTML code for a toolbar that contains the given buttons. '''
 
     return div(
-        *buttons,
-        **{"class": BUTTON_TOOLBAR_CLASS}
+        merge_attributes({"class": BUTTON_TOOLBAR_CLASS}, *content)
+        *content[1:]
     )
 
-def button_group_vertical(*buttons):
+def verticalbutton_group(*content):
     ''' Returns the HTML code for a vertical button group that contains the
     given buttons. '''
 
-    return div(
-        *buttons,
-        **{"class": BUTTON_GROUP_CLASS + " " + BUTTON_GROUP_VERTICAL_CLASS}
-    )
+    return button_group({"class": BUTTON_GROUP_CLASS}), *content)

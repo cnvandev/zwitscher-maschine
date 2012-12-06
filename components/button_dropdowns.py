@@ -3,6 +3,7 @@ sys.path.append("../dynamo")
 from dynamo import *
 from button_groups import zm_button, button_group
 from dropdowns import dropdown_menu
+from common import merge_attributes
 
 # Convenience methods for generating Twitter Bootstrap button dropdown HTML
 # code. See http://twitter.github.com/bootstrap/components.html#buttonDropdowns
@@ -59,22 +60,12 @@ def split_button_dropup(text, *menu_items):
 
 
 def caret_button():
-    ''' Returns the HTML code for a caret indicating a menu. '''
+    ''' Returns the HTML code for a caret indicating a dropdown/dropup menu. '''
 
     return button(
-        span("", **{"class": "caret"}),
-        **{
-            "class": " ".join([BUTTON_CLASS, DROPDOWN_TOGGLE_CLASS]),
+        {
+            "class": [BUTTON_CLASS, DROPDOWN_TOGGLE_CLASS],
             "data-toggle": DROPDOWN_CLASS
-        }
-    )
-
-
-def button_dropup_group(*buttons):
-    ''' Returns the HTML code for a button group that can contain a drop-up
-    menu. '''
-
-    return div(
-        *buttons,
-        **{"class": " ".join([BUTTON_GROUP_CLASS, DROPUP_CLASS])}
+        },
+        span({"class": "caret"})
     )
