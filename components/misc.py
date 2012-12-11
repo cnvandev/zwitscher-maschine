@@ -1,6 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
+from common import extract_attributes
 
 # Convenience methods for generating miscellaneous Twitter Bootstrap elements.
 # http://twitter.github.com/bootstrap/components.html#misc
@@ -17,8 +18,10 @@ def well(*content):
     ''' Returns the HTML code for a well. Like a grey-background blockquote. '''
 
     return div(
-        *content,
-        **{"class": WELL_CLASS}
+        extract_attributes(
+            {"class": WELL_CLASS},
+            *content
+        )
     )
 
 
@@ -27,8 +30,10 @@ def large_well(*content):
     blockquote. '''
 
     return div(
-        *content,
-        **{"class": " ".join([WELL_CLASS, LARGE_WELL_CLASS])}
+        extract_attributes(
+            {"class": [WELL_CLASS, LARGE_WELL_CLASS]},
+            *content
+        )
     )
 
 
@@ -37,8 +42,10 @@ def small_well(*content):
     blockquote. '''
 
     return div(
-        *content,
-        **{"class": " ".join([WELL_CLASS, SMALL_WELL_CLASS])}
+        extract_attributes(
+            {"class": [WELL_CLASS, SMALL_WELL_CLASS]},
+            *content
+        )
     )
 
 
@@ -47,8 +54,10 @@ def close():
     (like a window.) '''
 
     return a(
-        "&times;",
-        **{"class": CLOSE_CLASS, "href": "#"}
+        extract_attributes(
+            {"class": CLOSE_CLASS, "href": "#"},
+            "&times;"
+        )
     )
 
 
@@ -56,8 +65,10 @@ def container(*content):
     ''' Returns the HTML code for a basic div container. '''
 
     return div(
-        *content,
-        **{"class": CONTAINER_CLASS}
+        extract_attributes(
+            {"class": CONTAINER_CLASS},
+            *content
+        )
     )
 
 

@@ -1,6 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
+from common import extract_attributes
 
 # Convenience methods for generating Twitter Bootstrap labels and badges.
 # http://twitter.github.com/bootstrap/components.html#labels-badges
@@ -26,73 +27,73 @@ BADGE_IMPORTANT_CLASS = "-".join([BADGE_CLASS, IMPORTANT])
 BADGE_INFO_CLASS = "-".join([BADGE_CLASS, INFO])
 BADGE_INVERSE_CLASS = "-".join([BADGE_CLASS, INVERSE])
 
-def default_label(text):
+def default_label(*content):
     ''' Returns the HTML code for a grey-coloured label. ''' 
 
-    return span(text, **{"class": LABEL_CLASS})
+    return span(*extract_attributes({"class": LABEL_CLASS}, *content))
 
 
-def success_label(text):
+def success_label(*content):
     ''' Returns the HTML code for a successfully-green coloured label. '''
 
-    return span(text, **{"class": " ".join([LABEL_CLASS, LABEL_SUCCESS_CLASS])})
+    return span(*extract_attributes({"class": [LABEL_CLASS, LABEL_SUCCESS_CLASS]}, *content))
 
 
-def warning_label(text):
+def warning_label(*content):
     ''' Returns the HTML code for an orange warning label. '''
 
-    return span(text, **{"class": " ".join([LABEL_CLASS, LABEL_WARNING_CLASS])})
+    return span(*extract_attributes({"class": [LABEL_CLASS, LABEL_WARNING_CLASS]}, *content))
 
 
-def important_label(text):
+def important_label(*content):
     ''' Returns the HTML code for a red AHHHHHHHHH! label. '''
 
-    return span(text, **{"class": " ".join([LABEL_CLASS, LABEL_IMPORTANT_CLASS])})
+    return span(*extract_attributes({"class": [LABEL_CLASS, LABEL_IMPORTANT_CLASS]}, *content))
 
 
-def info_label(text):
+def info_label(*content):
     ''' Returns the HTML code for a light blue info label. '''
 
-    return span(text, **{"class": " ".join([LABEL_CLASS, LABEL_INFO_CLASS])})
+    return span(*extract_attributes({"class": [LABEL_CLASS, LABEL_INFO_CLASS]}, *content))
 
 
-def inverse_label(text):
+def inverse_label(*content):
     ''' Returns the HTML code for a black label with white text. '''
 
-    return span(text, **{"class": " ".join([LABEL_CLASS, LABEL_INVERSE_CLASS])})
+    return span(*extract_attributes({"class": [LABEL_CLASS, LABEL_INVERSE_CLASS]}, *content))
 
 
-def default_badge(number):
+def default_badge(*content):
     ''' Returns the HTML code for a grey-coloured badge. ''' 
 
-    return span(number, **{"class": BADGE_CLASS})
+    return span(*extract_attributes({"class": BADGE_CLASS}, *content))
 
 
-def success_badge(number):
+def success_badge(*content):
     ''' Returns the HTML code for a successfully-green coloured badge. '''
 
-    return span(number, **{"class": " ".join([BADGE_CLASS, BADGE_SUCCESS_CLASS])})
+    return span(*extract_attributes({"class": [BADGE_CLASS, BADGE_SUCCESS_CLASS]}, *content))
 
 
-def warning_badge(number):
+def warning_badge(*content):
     ''' Returns the HTML code for an orange warning badge. '''
 
-    return span(number, **{"class": " ".join([BADGE_CLASS, BADGE_WARNING_CLASS])})
+    return span(*extract_attributes({"class": [BADGE_CLASS, BADGE_WARNING_CLASS]}, *content))
 
 
-def important_badge(number):
+def important_badge(*content):
     ''' Returns the HTML code for a red AHHHHHHHHH! badge. '''
 
-    return span(number, **{"class": " ".join([BADGE_CLASS, BADGE_IMPORTANT_CLASS])})
+    return span(*extract_attributes({"class": [BADGE_CLASS, BADGE_IMPORTANT_CLASS]}, *content))
 
 
-def info_badge(number):
+def info_badge(*content):
     ''' Returns the HTML code for a light blue info badge. '''
 
-    return span(number, **{"class": " ".join([BADGE_CLASS, BADGE_INFO_CLASS])})
+    return span(*extract_attributes({"class": [BADGE_CLASS, BADGE_INFO_CLASS]}, *content))
 
 
-def inverse_badge(number):
+def inverse_badge(*content):
     ''' Returns the HTML code for a black badge with a white number. '''
 
-    return span(number, **{"class": " ".join([BADGE_CLASS, BADGE_INVERSE_CLASS])})
+    return span(*extract_attributes({"class": [BADGE_CLASS, BADGE_INVERSE_CLASS]}))

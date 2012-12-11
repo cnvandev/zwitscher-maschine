@@ -1,6 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
+from common import extract_attributes
 
 # Convenience methods for generating Twitter Bootstrap media elements.
 # http://twitter.github.com/bootstrap/components.html#media
@@ -20,18 +21,22 @@ def media(img_url, title, link_url, *content):
     or something. It kind of looks like a Facebook post. '''
 
     return div(
-        *media_content(img_url, title, link_url, *content)
-        **{"class", MEDIA_CLASS}
+        *extract_attributes(
+            {"class", MEDIA_CLASS},
+            *media_content(img_url, title, link_url, *content)
+        )
     )
 
 
-def media_list(*media_items):
+def media_list(*content):
     ''' A list that handles media items (even nested!) gracefully. Use
-    media_item to generate them. '''
+    media_list_item to generate them. '''
 
     return ul(
-        *media_items
-        **{"class": MEDIA_LIST_CLASS}
+        *extract_attributes(
+            {"class": MEDIA_LIST_CLASS},
+            *content
+        )
     )
 
 
@@ -40,8 +45,10 @@ def media_list_item(img_url, title, link_url, *content):
     is designed to gracefully hold them). '''
 
     return li(
-        *media_content(img_url, title, link_url, *content),
-        **{"class": MEDIA_CLASS}
+        *extract_attributes(
+            {"class": MEDIA_CLASS},
+            *media_content(img_url, title, link_url, *content)
+        )
     )
 
 
@@ -50,13 +57,11 @@ def media_content(img_url, title, link_url, *content):
     use media() or media_list() + media_list_item(). '''
 
     return [
-        a(
-            img(**{"src": img_url, "class": MEDIA_OBJECT_CLASS}),
-            **{"class": PULL_LEFT, "href": link_url}
+        a({"class": PULL_LEFT, "href": link_url},
+            img({"src": img_url, "class": MEDIA_OBJECT_CLASS})
         ),
-        div(
-            h4(title, **{"class": MEDIA_HEADING_CLASS}),
-            *content,
-            **{"class": MEDIA_BODY_CLASS}
+        div({"class": MEDIA_BODY_CLASS},
+            h4({"class": MEDIA_HEADING_CLASS}, title),
+            *content
         )
     ]

@@ -1,7 +1,7 @@
 from zwitscher_maschine import *
 sys.path.append("components")
-from alerts import *
+from breadcrumbs import *
 
 print basic_template(
-    long_success_alert("Dude!", {"class": "your_mom"}, "Watch out, man, you're gonna be in trouble."),
+    breadcrumbs(crumb(a({"href": "#"}, "One")), divider(), crumb(a({"href": "#"}, "Two")), divider(), crumb(a({"href": "#"}, "Three")))
 )

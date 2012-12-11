@@ -1,6 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
+from common import extract_attributes
 
 # Convenience methods for generating Twitter Bootstrap thumbnails.
 # http://twitter.github.com/bootstrap/components.html#thumbnails
@@ -9,29 +10,33 @@ SPAN_CLASS = "span"
 THUMBNAIL_CLASS = "thumbnail"
 THUMBNAILS_CLASS = THUMBNAIL_CLASS + "s"
 
-def thumbnails(*thumbnails):
+def thumbnails(*content):
     ''' Returns the HTML code for a container for thumbnail elements. '''
 
     return ul(
-        *thumbnails,
-        **{"class": THUMBNAILS_CLASS}
+        *extract_attributes(
+            {"class": THUMBNAILS_CLASS},
+            *content
+        )
     )
 
 
-def thumbnail(span, *elements):
+def thumbnail(span, *content):
     ''' Returns the HTML code for a single thumbnail element that can contain
     any HTML. Can contain one or multiple elements if needed. '''
 
     inner_elements = ""
     if len(elements) > 1:
         inner_elements = div(
-            *elements,
-            **{"class": THUMBNAIL_CLASS}
+            {"class": THUMBNAIL_CLASS},
+            *content
         )
     else :
-        inner_elements = elements
+        inner_elements = content
 
     return li(
-        *inner_elements,
-        **{"class": SPAN_CLASS + span}
+        *extract_attributes(
+            {"class": SPAN_CLASS + span},
+            *inner_elements
+        )
     )

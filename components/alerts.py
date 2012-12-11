@@ -99,7 +99,7 @@ def info_alert(title, *content):
 
     return alert(
         title,
-        extract_attributes({"class": ALERT_INFO_CLASS}, *content)
+        *extract_attributes({"class": ALERT_INFO_CLASS}, *content)
     )
 
 
@@ -108,5 +108,5 @@ def long_info_alert(title, *content):
 
     return long_alert(
         title,
-        extract_attributes({"class": ALERT_INFO_CLASS}, *content)
+        *extract_attributes({"class": ALERT_INFO_CLASS}, *content)
     )

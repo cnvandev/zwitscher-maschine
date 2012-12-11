@@ -3,7 +3,7 @@ sys.path.append("../dynamo")
 from dynamo import *
 from button_groups import zm_button, button_group
 from dropdowns import dropdown_menu
-from common import merge_attributes
+from common import extract_attributes
 
 # Convenience methods for generating Twitter Bootstrap button dropdown HTML
 # code. See http://twitter.github.com/bootstrap/components.html#buttonDropdowns

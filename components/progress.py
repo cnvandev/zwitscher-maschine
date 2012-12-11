@@ -2,6 +2,7 @@ import sys
 import collections
 sys.path.append("../dynamo")
 from dynamo import *
+from common import extract_attributes
 
 # Convenience methods for generating Twitter Bootstrap progress bar elements.
 # http://twitter.github.com/bootstrap/components.html#progress
@@ -111,8 +112,8 @@ def progress_factory(style, active, *bars):
     warning_bar(), success_bar(), etc. for child elements. '''
 
     return div(
-        *bars,
-        **{"class": " ".join([PROGRESS_CLASS] + style if style else [] + [ACTIVE_CLASS] if active else [])}
+        {"class": [PROGRESS_CLASS] + style if style else [] + [ACTIVE_CLASS] if active else []},
+        *bars
     )
 
 
@@ -123,9 +124,9 @@ def bar_factory(style, width):
     bar, so make sure your math adds up! '''
 
     return div(
-        "",
-        **{
+        {
             "class": " ".join([BAR_CLASS] + style if style else []),
             "style": "width: %%" % width
-        }
+        },
+        ""
     )
