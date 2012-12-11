@@ -111,8 +111,8 @@ def progress_factory(style, active, *bars):
     provided. Multiple bars can be included, see bar_factory() and info_bar(),
     warning_bar(), success_bar(), etc. for child elements. '''
 
-    return div(
-        {"class": [PROGRESS_CLASS] + style if style else [] + [ACTIVE_CLASS] if active else []},
+    return classed_div(
+        [PROGRESS_CLASS] + style if style else [] + [ACTIVE_CLASS] if active else [],
         *bars
     )
 
@@ -123,10 +123,7 @@ def bar_factory(style, width):
     no guarantees as to the total width of all bar elements within a progress
     bar, so make sure your math adds up! '''
 
-    return div(
-        {
-            "class": " ".join([BAR_CLASS] + style if style else []),
-            "style": "width: %%" % width
-        },
+    return classed_div([BAR_CLASS] + style if style else [],
+        {"style": "width: %%" % width},
         ""
     )

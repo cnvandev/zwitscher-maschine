@@ -12,49 +12,29 @@ PAGINATION_LARGE_CLASS = PAGINATION_CLASS + "-small"
 PAGINATION_LARGE_CLASS = PAGINATION_CLASS + "-mini"
 
 
-def large_pagination(*content):
-    ''' Returns the HTML for a huge pagination element. Fill with an unordered
-    list to display properly. '''
-
-    return div(
-        *extract_attributes(
-            {"class": [PAGINATION_CLASS, PAGINATION_LARGE_CLASS]},
-            *content
-        )
-    )
-
-
 def pagination(*content):
     ''' Returns the HTML for a pagination element. Fill with an unordered list
     (I know, right? Unordered?) to display properly. '''
     
-    return div(
-        *extract_attributes(
-            {"class": PAGINATION_CLASS},
-            *content
-        )
-    )
+    return classed_div(PAGINATION_CLASS, *content)
+
+
+def large_pagination(*content):
+    ''' Returns the HTML for a huge pagination element. Fill with an unordered
+    list to display properly. '''
+
+    return pagination(classes(PAGINATION_LARGE_CLASS), *content)
 
 
 def small_pagination(*content):
     ''' Returns the HTML for a small pagination element. Fill with an unordered
     list to display properly. '''
 
-    return div(
-        *extract_attributes(
-            {"class": [PAGINATION_CLASS, PAGINATION_SMALL_CLASS]},
-            *content
-        )
-    )
+    return pagination(classes(PAGINATION_SMALL_CLASS), *content)
 
 
 def mini_pagination(*content):
     ''' Returns the HTML for a tiny pagination element. Fill with an unordered
     list to display properly. '''
 
-    return div(
-        *extract_attributes(
-            {"class": [PAGINATION_CLASS, PAGINATION_MINI_CLASS]},
-            *content
-        )
-    )
+    return pagination(classes(PAGINATION_MINI_CLASS), *content)

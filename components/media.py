@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classes, classed_div, classed_ul, classed_li
 
 # Convenience methods for generating Twitter Bootstrap media elements.
 # http://twitter.github.com/bootstrap/components.html#media
@@ -20,11 +20,8 @@ def media(img_url, title, link_url, *content):
     ''' Returns the HTML for a basic formatter for a "media object" like a video
     or something. It kind of looks like a Facebook post. '''
 
-    return div(
-        *extract_attributes(
-            {"class", MEDIA_CLASS},
-            *media_content(img_url, title, link_url, *content)
-        )
+    return classed_div(MEDIA_CLASS,
+        *media_content(img_url, title, link_url, *content
     )
 
 
@@ -32,23 +29,15 @@ def media_list(*content):
     ''' A list that handles media items (even nested!) gracefully. Use
     media_list_item to generate them. '''
 
-    return ul(
-        *extract_attributes(
-            {"class": MEDIA_LIST_CLASS},
-            *content
-        )
-    )
+    return classed_ul(MEDIA_LIST_CLASS, *content)
 
 
 def media_list_item(img_url, title, link_url, *content):
     ''' A single list item in a media list (see media_list() for something that
     is designed to gracefully hold them). '''
 
-    return li(
-        *extract_attributes(
-            {"class": MEDIA_CLASS},
-            *media_content(img_url, title, link_url, *content)
-        )
+    return classed_li(MEDIA_CLASS,
+        *media_content(img_url, title, link_url, *content)
     )
 
 
@@ -60,8 +49,8 @@ def media_content(img_url, title, link_url, *content):
         a({"class": PULL_LEFT, "href": link_url},
             img({"src": img_url, "class": MEDIA_OBJECT_CLASS})
         ),
-        div({"class": MEDIA_BODY_CLASS},
-            h4({"class": MEDIA_HEADING_CLASS}, title),
+        classed_div(MEDIA_BODY_CLASS,
+            h4(classes(MEDIA_HEADING_CLASS), title),
             *content
         )
     ]

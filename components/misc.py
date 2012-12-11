@@ -17,36 +17,21 @@ CLOSE_CLASS = "close"
 def well(*content):
     ''' Returns the HTML code for a well. Like a grey-background blockquote. '''
 
-    return div(
-        extract_attributes(
-            {"class": WELL_CLASS},
-            *content
-        )
-    )
+    return classed_div(WELL_CLASS, *content)
 
 
 def large_well(*content):
     ''' Returns the HTML code for a large well. Like a grey-background
     blockquote. '''
 
-    return div(
-        extract_attributes(
-            {"class": [WELL_CLASS, LARGE_WELL_CLASS]},
-            *content
-        )
-    )
+    return classed_div([WELL_CLASS, LARGE_WELL_CLASS], *content)
 
 
 def small_well(*content):
     ''' Returns the HTML code for a small well. Like a grey-background
     blockquote. '''
 
-    return div(
-        extract_attributes(
-            {"class": [WELL_CLASS, SMALL_WELL_CLASS]},
-            *content
-        )
-    )
+    return classed_div([WELL_CLASS, SMALL_WELL_CLASS], *content)
 
 
 def close():
@@ -54,7 +39,7 @@ def close():
     (like a window.) '''
 
     return a(
-        extract_attributes(
+        *extract_attributes(
             {"class": CLOSE_CLASS, "href": "#"},
             "&times;"
         )
@@ -64,12 +49,7 @@ def close():
 def container(*content):
     ''' Returns the HTML code for a basic div container. '''
 
-    return div(
-        extract_attributes(
-            {"class": CONTAINER_CLASS},
-            *content
-        )
-    )
+    return classed_div(CONTAINER_CLASS, *content)
 
 
 def component_scripts(scripts):

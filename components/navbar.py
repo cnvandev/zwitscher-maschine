@@ -45,9 +45,7 @@ def brand(*content):
 
     '''
 
-    return a(
-        *extract_attributes({"class": NAVBAR_CLASS}, *content)
-    )
+    return classed_a(NAVBAR_CLASS, *content)
 
 
 def nav_group(*content):
@@ -56,17 +54,13 @@ def nav_group(*content):
 
     '''
 
-    return ul(
-        *extract_attributes({"class": NAV_CLASS}, *content)
-    )
+    return classed_ul(NAV_CLASS, *content)
 
 
 def nav_divider():
     ''' A vertical divider for navigation bars. '''
 
-    return li(
-        *extract_attributes({"class": DIVIDER_CLASS}, *content)
-    )
+    return classed_li(DIVIDER_CLASS, *content)
 
 
 def form_left(*content):
@@ -75,9 +69,7 @@ def form_left(*content):
 
     '''
 
-    return form(
-        extract_attributes({"class": NAVBAR_FORM_CLASS}, *content)
-    )
+    return classed_form(NAVBAR_FORM_CLASS, *content)
 
 
 def search_input(*content):
@@ -87,12 +79,7 @@ def search_input(*content):
 
     '''
 
-    return Input(
-        extract_attributes(
-            {"type": "text", "class": SEARCH_INPUT_CLASS},
-            *content
-        )
-    )
+    return classed_input(SEARCH_INPUT_CLASS, {"type": "text"}, *content)
 
 
 def search_form(*content):
@@ -100,12 +87,7 @@ def search_form(*content):
 
     '''
 
-    return form(
-        extract_attributes(
-            {"class": NAVBAR_FORM_CLASS},
-            *content
-        )
-    )
+    return classed_form(NAVBAR_SEARCH_CLASS, *content)
 
 
 def navbar_text(*content):
@@ -113,9 +95,4 @@ def navbar_text(*content):
 
     '''
 
-    return p(
-        extract_attributes(
-            {"class": NAVBAR_FORM_CLASS + "-text"},
-            *content
-        )
-    )
+    return classed_p(NAVBAR_FORM_CLASS + "-text", *content)

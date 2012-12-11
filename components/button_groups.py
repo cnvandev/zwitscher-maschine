@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_div, classed_button
 
 # Convenience methods for generating Twitter Bootstrap button group HTML code.
 # http://twitter.github.com/bootstrap/components.html#buttonGroup for examples.
@@ -15,24 +15,18 @@ BUTTON_GROUP_VERTICAL_CLASS = BUTTON_GROUP_CLASS + "-vertical"
 def zm_button(text):
     ''' Returns the HTML code for a Twitter Bootstrap-ready button. '''
 
-    return button(
-        *extract_attributes({"class": BUTTON_CLASS}, *content)
-    )
+    return classed_button(BUTTON_CLASS, *content)
 
 def button_group(*content):
     ''' Returns the HTML code for a button group that contains the given
     buttons. '''
 
-    return div(
-        *extract_attributes({"class": BUTTON_GROUP_CLASS}, *content)
-    )
+    return classed_div(BUTTON_GROUP_CLASS, *content)
 
 def button_toolbar(*content):
     ''' Returns the HTML code for a toolbar that contains the given buttons. '''
 
-    return div(
-        *extract_attributes({"class": BUTTON_TOOLBAR_CLASS}, *content)
-    )
+    return classed_div(BUTTON_TOOLBAR_CLASS, *content)
 
 def verticalbutton_group(*content):
     ''' Returns the HTML code for a vertical button group that contains the

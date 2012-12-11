@@ -62,10 +62,7 @@ def split_button_dropup(text, *menu_items):
 def caret_button():
     ''' Returns the HTML code for a caret indicating a dropdown/dropup menu. '''
 
-    return button(
-        {
-            "class": [BUTTON_CLASS, DROPDOWN_TOGGLE_CLASS],
-            "data-toggle": DROPDOWN_CLASS
-        },
+    return classed_button([BUTTON_CLASS, DROPDOWN_TOGGLE_CLASS],
+        {"data-toggle": DROPDOWN_CLASS},
         span({"class": "caret"})
     )

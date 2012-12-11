@@ -14,14 +14,12 @@ def hero_unit(*content):
     ''' Returns the HTML code for a 'Hero Unit', like a big marketing banner on
     a front page. '''
 
-    return div(*extract_attributes({"class": HERO_UNIT_CLASS}, *elements))
+    return classed_div(HERO_UNIT_CLASS, *elements)
 
 
 def page_header(title, subtitle):
     ''' Returns the HTML for a page header or title, with a subtitle. '''
     
-    return div(
-        *extract_attributes({"class": PAGE_HEADER_CLASS},
-            h1(title, small(subtitle)
-        )
+    return classed_div(PAGE_HEADER_CLASS,
+        h1(title, small(subtitle)
     )

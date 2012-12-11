@@ -26,19 +26,14 @@ def generic_nav(*content):
     ''' Returns the HTML code for a set of tab navigaiton elements using the set
     of given tabs. '''
 
-    return ul(
-        *extract_attributes(
-            {"class": [NAV_CLASS, NAV_TABS_CLASS]},
-            *content
-        )
-    )
+    return classed_ul([NAV_CLASS, NAV_TABS_CLASS], *content)
 
 
 def pills(*content):
     ''' Returns the HTML code for a set of "pill" navigaiton elements using the
     set of given tabs. '''
 
-    return generic_nav({"class": NAV_PILLS_CLASS}, *content)
+    return generic_nav(classes(NAV_PILLS_CLASS), *content)
 
 
 def element(*content):
@@ -54,23 +49,13 @@ def tab_navigation(*content):
     ''' Returns the HTML code for a tab navigation container using the supplied
     tabs and container (see tabs() and tab_container()). '''
     
-    return div(
-        *extract_attributes(
-            {"class": TABBABLE_CLASS},
-            *content
-        )
-    )
+    return classed_div(TABBABLE_CLASS, *content)
 
 
 def tab_container(*content):
     ''' Returns a container for tab-pane elements. '''
 
-    return div(
-        *extract_attributes(
-            {"class": TAB_CONTENT_CLASS},
-            *content
-        )
-    )
+    return classed_div(TAB_CONTENT_CLASS, *content)
 
 
 def tab_pane(tab_id, *content):
@@ -85,12 +70,12 @@ def tab_pane(tab_id, *content):
 
 
 def stacked():
-    return {"class": NAV_STACKED_CLASS}
+    return classes(NAV_STACKED_CLASS)
 
 
 def active():
-    return {"class": ACTIVE_CLASS}
+    return classes(ACTIVE_CLASS)
 
 
 def disabled():
-    return {"class": DISABLED_CLASS}
+    return classes(DISABLED_CLASS)

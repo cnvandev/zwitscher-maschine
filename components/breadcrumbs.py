@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_ul
 
 # Convenience methods for generating Twitter Bootstrap navigation bars.
 # http://twitter.github.com/bootstrap/components.html#navbar
@@ -13,24 +13,23 @@ from common import extract_attributes
 BREADCRUMBS_CLASS = "breadcrumb"
 DIVIDER_CLASS = "divider"
 
-def breadcrumbs(*crumbs):
+def breadcrumbs(*content):
     ''' Returns the HTML code for a breadcrumb listing. Fill with crumb() and
     divider() elements (see below in this class.) '''
 
-    return ul(
-        *extract_attributes({"class": BREADCRUMBS_CLASS}, *crumbs)
-    )
+    return classed_ul(BREADCRUMBS_CLASS, *content)
 
 
 def divider(*content):
-    ''' Returns a divider class for use to split breadcrumbs. It's a slash. '''
+    ''' Returns a divider class for use to split breadcrumbs. Twitter Bootstrap
+    examples all pass in a slash as the only content.
 
-    return "&nbsp;" + span(*extract_attributes({"class": DIVIDER_CLASS}, *(content + ("/",))))
+    '''
+
+    return "&nbsp;" + span(*extract_attributes({"class": DIVIDER_CLASS}, *content))
 
 def crumb(*content):
     ''' Returns a single "crumb" in a breadcrumb group. Common usage is to give
     it a link to the page, but can also take raw text. '''
 
-    return li(
-        *content
-    )
+    return li(*content)
