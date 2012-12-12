@@ -33,28 +33,15 @@ def alert_factory(is_long, title, *content):
 
     '''
 
-    # We need to add two children to the top of the content list. However, we
-    # don't know whether there is an extra attributes hash in the first slot of
-    # the content list. But, we do know that there will such a hash *after* the
-    # attributes are merged (because that's why we're merging, we're adding
-    # attributes), so we'll add the children after the hash has been merged
-    # into offsets 1 and 2.
-    # I would love a cleaner way to do this.
-    merged_content = list(extract_attributes({"class": ALERT_CLASS}, *content))
-    merged_content.insert(1, 
-        button(
+    return classed_div(ALERT_CLASS, *content,
+        prepends=[classed_button(CLOSE_CLASS,
             {
                 "type": BUTTON_CLASS,
-                "class": CLOSE_CLASS,
                 "data-dismiss": ALERT_CLASS
             },
             "x"
-        )
-    )
-    merged_content.insert(2, strong(title) if is_long else h4(title))
-
-    return div(
-        *merged_content
+        ),
+        strong(title) if is_long else h4(title)]
     )
 
 
