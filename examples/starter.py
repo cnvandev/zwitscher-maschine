@@ -17,7 +17,7 @@ print html({"lang": "en"},
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
             }
         '''),
-        link(href="../assets/css/bootstrap-responsive.css", rel="stylesheet"),
+        component_css("responsive"),
 
         comment("HTML5 shim, for IE6-8 support of HTML5 elements"),
         conditional_comment(
@@ -44,7 +44,7 @@ print html({"lang": "en"},
         =================================================='''),
         comment("Placed at the end of the document so the pages load faster"),
         script(src="../assets/js/jquery.js"),
-        component_scripts(["transition", "alert", "modal", "dropdown", "scrollspy", "tab", "tooltip", "popover", "button", "collapse", "carousel", "typeahead"])
+        component_scripts("transition", "alert", "modal", "dropdown", "scrollspy", "tab", "tooltip", "popover", "button", "collapse", "carousel", "typeahead")
     )
 )
 
