@@ -42,7 +42,6 @@ def alert_factory(is_long, title, *content):
             "x"
         ),
         strong(title) if is_long else h4(title)],
-        append=strong("fuck you")
     )
 
 

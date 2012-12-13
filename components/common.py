@@ -121,6 +121,18 @@ def classed_p(dem_classes, *content, **kwargs):
 def classes(dem_classes):
     return {"class": dem_classes}
 
+def href(address):
+    return {"href": address}
+
+def ID(the_id):
+    return {"id": the_id}
+
+def Type(the_type):
+    return {"type": the_type}
+
+def toggle(data_type):
+    return {"data-toggle": toggle}
+
 
 def untabbable():
     return {"tabindex": "-1"}

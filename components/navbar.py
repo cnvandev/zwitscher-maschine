@@ -80,7 +80,7 @@ def search_input(*content):
 
     '''
 
-    return classed_input(SEARCH_INPUT_CLASS, {"type": "text"}, *content)
+    return classed_input(SEARCH_INPUT_CLASS, Type("text"), *content)
 
 
 def search_form(*content):

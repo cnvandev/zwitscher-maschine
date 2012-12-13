@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes, classed_ul
+from common import extract_attributes, classed_ul, classed_span
 
 # Convenience methods for generating Twitter Bootstrap navigation bars.
 # http://twitter.github.com/bootstrap/components.html#navbar
@@ -26,7 +26,7 @@ def divider(*content):
 
     '''
 
-    return "&nbsp;" + span(*extract_attributes({"class": DIVIDER_CLASS}, *content))
+    return "&nbsp;" + classed_span(DIVIDER_CLASS, *content)
 
 def crumb(*content):
     ''' Returns a single "crumb" in a breadcrumb group. Common usage is to give

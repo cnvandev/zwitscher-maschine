@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes, classed_ul, classed_div, classes, combine, active, disabled
+from common import extract_attributes, classed_ul, classed_div, classes, combine, active, disabled, ID
 
 # Convenience methods for generating Twitter Bootstrap navigation elements
 # HTML code - http://twitter.github.com/bootstrap/components.html#navs.
@@ -58,7 +58,7 @@ def tab_container(*content):
 def tab_pane(tab_id, *content):
     ''' Returns a single content pane for tab navigation. '''
     
-    return classed_div(TAB_PANE_CLASS, {"id": tab_id}, *content))
+    return classed_div(TAB_PANE_CLASS, ID(tab_id), *content))
 
 
 def stacked():

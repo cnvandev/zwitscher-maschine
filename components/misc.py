@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_div, classed_a, combine, href
 
 # Convenience methods for generating miscellaneous Twitter Bootstrap elements.
 # http://twitter.github.com/bootstrap/components.html#misc
@@ -38,7 +38,7 @@ def close():
     ''' Returns the HTML code for an X that indicates an element can be closed
     (like a window.) '''
 
-    return classed_a(CLOSE_CLASS, {"href": "#"}, "&times;"))
+    return classed_a(CLOSE_CLASS, href("#"), "&times;"))
 
 
 def container(*content):
