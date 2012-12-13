@@ -1,26 +1,23 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_ul, classed_div, classes, combine, active, disabled
 
 # Convenience methods for generating Twitter Bootstrap navigation elements
 # HTML code - http://twitter.github.com/bootstrap/components.html#navs.
 
 NAV_CLASS = "nav"
-NAV_TABS_CLASS = NAV_CLASS + "-tabs"
-NAV_PILLS_CLASS = NAV_CLASS + "-pills"
-NAV_STACKED_CLASS = NAV_CLASS + "-stacked"
-
-ACTIVE_CLASS = "active"
-DISABLED_CLASS = "disabled"
+NAV_TABS_CLASS = combine(NAV_CLASS, "tabs")
+NAV_PILLS_CLASS = combine(NAV_CLASS, "pills")
+NAV_STACKED_CLASS = combine(NAV_CLASS, "stacked")
 
 TABBABLE_CLASS = "tabbable"
 TAB_CLASS = "tab"
-TAB_LEFT_CLASS = TAB_CLASS + "-left"
-TAB_RIGHT_CLASS = TAB_CLASS + "-right"
-TAB_BELOW_CLASS = TAB_CLASS + "-below"
-TAB_CONTENT_CLASS = TAB_CLASS + "-content"
-TAB_PANE_CLASS = TAB_CLASS + "-pane"
+TAB_LEFT_CLASS = combine(TAB_CLASS, "left")
+TAB_RIGHT_CLASS = combine(TAB_CLASS, "right")
+TAB_BELOW_CLASS = combine(TAB_CLASS, "below")
+TAB_CONTENT_CLASS = combine(TAB_CLASS, "content")
+TAB_PANE_CLASS = combine(TAB_CLASS, "pane")
 
 def generic_nav(*content):
     ''' Returns the HTML code for a set of tab navigaiton elements using the set
@@ -61,21 +58,8 @@ def tab_container(*content):
 def tab_pane(tab_id, *content):
     ''' Returns a single content pane for tab navigation. '''
     
-    return div(
-        *extract_attributes(
-            {"class": TAB_PANE_CLASS, "id": tab_id},
-            *content
-        )
-    )
+    return classed_div(TAB_PANE_CLASS, {"id": tab_id}, *content))
 
 
 def stacked():
     return classes(NAV_STACKED_CLASS)
-
-
-def active():
-    return classes(ACTIVE_CLASS)
-
-
-def disabled():
-    return classes(DISABLED_CLASS)

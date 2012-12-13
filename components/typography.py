@@ -1,13 +1,13 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_div, combine
 
 # Convenience methods for generating Twitter Bootstrap typographic elements.
 # http://twitter.github.com/bootstrap/components.html#typography
 
-HERO_UNIT_CLASS = "hero-unit"
-PAGE_HEADER_CLASS = "page-header"
+HERO_UNIT_CLASS = combine("hero", "unit")
+PAGE_HEADER_CLASS = combine("page", "header")
 
 
 def hero_unit(*content):

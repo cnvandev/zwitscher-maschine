@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_ul, classed_li, classed_div
 
 # Convenience methods for generating Twitter Bootstrap thumbnails.
 # http://twitter.github.com/bootstrap/components.html#thumbnails

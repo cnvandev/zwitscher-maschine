@@ -1,17 +1,17 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes, classes, classed_div, classed_ul, classed_li
+from common import extract_attributes, classes, classed_div, classed_ul, classed_li, combine
 
 # Convenience methods for generating Twitter Bootstrap media elements.
 # http://twitter.github.com/bootstrap/components.html#media
 
 
 MEDIA_CLASS = "media"
-MEDIA_LIST_CLASS = MEDIA_CLASS + "-list"
-MEDIA_BODY_CLASS = MEDIA_CLASS + "-body"
-MEDIA_OBJECT_CLASS = MEDIA_CLASS + "-object"
-MEDIA_HEADING_CLASS = MEDIA_CLASS + "-heading"
+MEDIA_LIST_CLASS = combine(MEDIA_CLASS, "list")
+MEDIA_BODY_CLASS = combine(MEDIA_CLASS, "body")
+MEDIA_OBJECT_CLASS = combine(MEDIA_CLASS, "object")
+MEDIA_HEADING_CLASS = combine(MEDIA_CLASS, "heading")
 
 PULL_LEFT = "pull-left"
 

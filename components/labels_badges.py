@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import classed_span, classes
+from common import classed_span, classes, combine, SUCCESS, WARNING, IMPORTANT, INFO, INVERSE
 
 # Convenience methods for generating Twitter Bootstrap labels and badges.
 # http://twitter.github.com/bootstrap/components.html#labels-badges
@@ -9,23 +9,17 @@ from common import classed_span, classes
 LABEL_CLASS = "label"
 BADGE_CLASS = "badge"
 
-SUCCESS = "success"
-WARNING = "warning"
-IMPORTANT = "important"
-INFO = "info"
-INVERSE = "inverse"
+LABEL_SUCCESS_CLASS = combine(LABEL_CLASS, SUCCESS)
+LABEL_WARNING_CLASS = combine(LABEL_CLASS, WARNING)
+LABEL_IMPORTANT_CLASS = combine(LABEL_CLASS, IMPORTANT)
+LABEL_INFO_CLASS = combine(LABEL_CLASS, INFO)
+LABEL_INVERSE_CLASS = combine(LABEL_CLASS, INVERSE)
 
-LABEL_SUCCESS_CLASS = "-".join([LABEL_CLASS, SUCCESS])
-LABEL_WARNING_CLASS = "-".join([LABEL_CLASS, WARNING])
-LABEL_IMPORTANT_CLASS = "-".join([LABEL_CLASS, IMPORTANT])
-LABEL_INFO_CLASS = "-".join([LABEL_CLASS, INFO])
-LABEL_INVERSE_CLASS = "-".join([LABEL_CLASS, INVERSE])
-
-BADGE_SUCCESS_CLASS = "-".join([BADGE_CLASS, SUCCESS])
-BADGE_WARNING_CLASS = "-".join([BADGE_CLASS, WARNING])
-BADGE_IMPORTANT_CLASS = "-".join([BADGE_CLASS, IMPORTANT])
-BADGE_INFO_CLASS = "-".join([BADGE_CLASS, INFO])
-BADGE_INVERSE_CLASS = "-".join([BADGE_CLASS, INVERSE])
+BADGE_SUCCESS_CLASS = combine(BADGE_CLASS, SUCCESS)
+BADGE_WARNING_CLASS = combine(BADGE_CLASS, WARNING)
+BADGE_IMPORTANT_CLASS = combine(BADGE_CLASS, IMPORTANT)
+BADGE_INFO_CLASS = combine(BADGE_CLASS, INFO)
+BADGE_INVERSE_CLASS = combine(BADGE_CLASS, INVERSE)
 
 def default_label(*content):
     ''' Returns the HTML code for a grey-coloured label. ''' 

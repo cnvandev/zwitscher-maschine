@@ -1,13 +1,16 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes, classed_li, classed_ul, untabbable, classes
+from common import extract_attributes, classed_li, classed_ul, untabbable, classes, combine, untabbable
 
 # Convenience methods for generating Twitter Bootstrap dropdown menu HTML code.
 # http://twitter.github.com/bootstrap/components.html#dropdowns for examples.
 
-MENU_CLASS = "dropdown-menu"
-SUBMENU_CLASS = "dropdown-submenu"
+DROPDOWN_CLASS = "dropdown"
+DROPUP_CLASS = "dropup"
+
+MENU_CLASS = combine(DROPDOWN_CLASS, "menu")
+SUBMENU_CLASS = combine(DROPDOWN_CLASS, "submenu")
 
 DIVIDER_CLASS = "divider"
 
@@ -40,8 +43,7 @@ def submenu(text, url, *items):
     ''' Returns the HTML code for a submenu in a dropdown menu. The submenu
     can contain its own items just like a regular menu. '''
 
-    merged_content = list(extract_attributes(classes(SUBMENU_CLASS), *items))
-    merged_content.insert(1, a(untabbable(), text, href=url))
-    merged_content.insert(2, dropdown_menu(*items))
-
-    return li(*merged_content)
+    return classed_li(
+        SUBMENU_CLASS, items,
+        prepend=[a(untabbable(), text, href=url), dropdown_menu(*items)]
+    )

@@ -3,12 +3,31 @@ import sys
 sys.path.append("../dynamo")
 from dynamo import *
 
+# Common classes used by Twitter bootstrap.
+SUCCESS = "success"
+INFO = "info"
+INVERSE = "inverse"
+IMPORTANT = "important"
+WARNING = "warning"
+ERROR = "error"
+DANGER = "danger"
+
+LARGE = "large"
+SMALL = "small"
+MINI = "mini"
+
+ACTIVE = "active"
+DISABLED = "disabled"
+
+def combine(*classes):
+    return "-".join(classes)
+
 def extract_attributes(attributes, *content, **kwargs):
     # If there's nothing to add, pass the attributes through.
     initial_offset = 0
+    content = list(content)
     if len(content) is 0 or not isinstance(content[0], dict):
         if attributes:
-            content = list(content)
             content.insert(0, attributes)
     else:
         for (key, value) in attributes.iteritems():
@@ -22,27 +41,29 @@ def extract_attributes(attributes, *content, **kwargs):
             else:
                 content[0][key] = value
 
-    # If we have anything to prepend or append
+    # If we have anything to prepend.
     if kwargs.has_key("prepend"):
         prepends = ensure_list(kwargs["prepend"])
         for index, prepend in enumerate(prepends):
             if len(content) is 0 or not isinstance(content[0], dict):
-                merged_content.insert(index + 1, prepend)
+                content.insert(index, prepend)
             else:
-                merged_content.insert(index, prepend)
-    else if kwargs.has_key("append"):
+                content.insert(index + 1, prepend)
+
+    # If we have anything to append.
+    if kwargs.has_key("append"):
         appends = ensure_list(kwargs["append"])
-        for index, append in enumerate(appends):
-            merged_content.append(append)
+        for append in appends:
+            content.append(append)
 
     return content
 
 
 def ensure_list(potential_list):
-    if not isinstance(potential_list, collections.Iterable) and not isinstance(potential_list, basestring):
-            return list(potential_list)
-        else:
-            return potential_list
+    if isinstance(potential_list, collections.Iterable) and not isinstance(potential_list, basestring):
+        return potential_list
+    else:
+        return [potential_list]
 
 
 # We cheat a bit here - Dynamo uses tag_with_child internally to construct tags,
@@ -103,3 +124,10 @@ def classes(dem_classes):
 
 def untabbable():
     return {"tabindex": "-1"}
+
+def active():
+    return classes(ACTIVE_CLASS)
+
+
+def disabled():
+    return classes(DISABLED_CLASS)

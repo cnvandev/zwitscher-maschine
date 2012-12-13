@@ -1,25 +1,26 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_a, classed_ul, classed_li, classed_input, classed_form, classed_p, combine
 
 # Convenience methods for generating Twitter Bootstrap navigation bars.
 # http://twitter.github.com/bootstrap/components.html#navbar
 
 NAVBAR_CLASS = "navbar"
-NAVBAR_INNER_CLASS = NAVBAR_CLASS + "-inner"
-NAVBAR_INVERSE_CLASS = NAVBAR_CLASS + "-inverse"
+NAVBAR_INNER_CLASS = combine(NAVBAR_CLASS, "inner")
+NAVBAR_INVERSE_CLASS = combine(NAVBAR_CLASS, "inverse")
 BRAND_CLASS = "brand"
 
-PULL_LEFT_CLASS = "pull-left"
-PULL_RIGHT_CLASS = "pull-right"
+PULL_LEFT_CLASS = combine("pull", "left")
+PULL_RIGHT_CLASS = combine("pull", "right")
 
-NAVBAR_FORM_CLASS = NAVBAR_CLASS + "-form"
-NAVBAR_SEARCH_CLASS = NAVBAR_CLASS + "-search"
-SEARCH_INPUT_CLASS = "search-query"
+NAVBAR_FORM_CLASS = combine(NAVBAR_CLASS, "form")
+NAVBAR_SEARCH_CLASS = combine(NAVBAR_CLASS, "search")
+NAVBAR_TEXT_CLASS = combine(NAVBAR_FORM_CLASS, "text")
+SEARCH_INPUT_CLASS = combine("search", "query")
 
 NAV_CLASS = "nav"
-DIVIDER_CLASS = "divider-vertical"
+DIVIDER_CLASS = combine("divider", "vertical")
 
 
 
@@ -33,9 +34,9 @@ def navbar(*content):
     # Gross little hack - we have to wrap the content (regardless of an
     # attributes hash) with a div(). We can do this because we know
     # extract_attributes() will return a hash first, since we're giving it one.
-    merged_content = extract_attributes({"class": NAVBAR_CLASS}, *content)
+    merged_content = extract_attributes(classes(NAVBAR_CLASS), *content)
     attributes = merged_content[0:1]
-    merged_content = div({"class": NAVBAR_INNER_CLASS}, *merged_content[1:])
+    merged_content = classed_div(NAVBAR_INNER_CLASS, *merged_content[1:])
     return div(*merged_content)
 
 
@@ -95,4 +96,4 @@ def navbar_text(*content):
 
     '''
 
-    return classed_p(NAVBAR_FORM_CLASS + "-text", *content)
+    return classed_p(, *content)

@@ -7,8 +7,8 @@ from common import extract_attributes
 # http://twitter.github.com/bootstrap/components.html#misc
 
 WELL_CLASS = "well"
-LARGE_WELL_CLASS = WELL_CLASS + "-large"
-SMALL_WELL_CLASS = WELL_CLASS + "-small"
+LARGE_WELL_CLASS = combine(WELL_CLASS, "large")
+SMALL_WELL_CLASS = combine(WELL_CLASS, "small")
 
 CONTAINER_CLASS = "container"
 
@@ -38,12 +38,7 @@ def close():
     ''' Returns the HTML code for an X that indicates an element can be closed
     (like a window.) '''
 
-    return a(
-        *extract_attributes(
-            {"class": CLOSE_CLASS, "href": "#"},
-            "&times;"
-        )
-    )
+    return classed_a(CLOSE_CLASS, {"href": "#"}, "&times;"))
 
 
 def container(*content):

@@ -2,30 +2,25 @@ import sys
 import collections
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_div, combine, ACTIVE, SUCCESS, WARNING, DANGER
 
 # Convenience methods for generating Twitter Bootstrap progress bar elements.
 # http://twitter.github.com/bootstrap/components.html#progress
 
 PROGRESS_CLASS = "progress"
 BAR_CLASS = "bar"
+STRIPED = "striped"
 
-INFO = "info"
-SUCCESS = "success"
-WARNING = "warning"
-DANGER = "danger"
+PROGRESS_STRIPED_CLASS = combine(PROGRESS_CLASS, STRIPED)
 
-PROGRESS_STRIPED_CLASS = PROGRESS_CLASS + "-striped"
-ACTIVE_CLASS = "active"
+PROGRESS_INFO_CLASS = combine(PROGRESS_CLASS, INFO)
+PROGRESS_WARNING_CLASS = combine(PROGRESS_CLASS, SUCCESS)
+PROGRESS_SUCCESS_CLASS = combine(PROGRESS_CLASS, WARNING)
+PROGRESS_DANGER_CLASS = combine(PROGRESS_CLASS, DANGER)
 
-PROGRESS_INFO_CLASS = "-".join([PROGRESS_CLASS, INFO])
-PROGRESS_WARNING_CLASS = "-".join([PROGRESS_CLASS, SUCCESS])
-PROGRESS_SUCCESS_CLASS = "-".join([PROGRESS_CLASS, WARNING])
-PROGRESS_DANGER_CLASS = "-".join([PROGRESS_CLASS, DANGER])
-
-SUCCESS_BAR_CLASS = "-".join([BAR_CLASS, WARNING])
-WARNING_BAR_CLASS = "-".join([BAR_CLASS, SUCCESS])
-DANGER_BAR_CLASS = "-".join([BAR_CLASS, DANGER])
+SUCCESS_BAR_CLASS = combine(BAR_CLASS, WARNING)
+WARNING_BAR_CLASS = combine(BAR_CLASS, SUCCESS)
+DANGER_BAR_CLASS = combine(BAR_CLASS, DANGER)
 
 
 def progress_bar(*bars):

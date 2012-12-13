@@ -1,15 +1,15 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_div, classes, combine, LARGE, SMALL, MINI
 
 # Convenience methods for generating Twitter Bootstrap pagination elements.
 # http://twitter.github.com/bootstrap/components.html#pagination
 
 PAGINATION_CLASS = "pagination"
-PAGINATION_LARGE_CLASS = PAGINATION_CLASS + "-large"
-PAGINATION_LARGE_CLASS = PAGINATION_CLASS + "-small"
-PAGINATION_LARGE_CLASS = PAGINATION_CLASS + "-mini"
+PAGINATION_LARGE_CLASS = combine(PAGINATION_CLASS, LARGE)
+PAGINATION_SMALL_CLASS = combine(PAGINATION_CLASS, SMALL)
+PAGINATION_MINI_CLASS = combine(PAGINATION_CLASS, MINI)
 
 
 def pagination(*content):

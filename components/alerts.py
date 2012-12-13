@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes
+from common import extract_attributes, classed_div, classed_button, classes, combine, SUCCESS, INFO, ERROR
 
 # Convenience methods for generating Twitter Bootstrap alert elements.
 # http://twitter.github.com/bootstrap/components.html#alerts
@@ -11,9 +11,9 @@ ALERT_BLOCK_CLASS = ALERT_CLASS + "-block"
 CLOSE_CLASS = "close"
 BUTTON_CLASS = "button"
 
-ALERT_ERROR_CLASS = ALERT_CLASS + "-error"
-ALERT_SUCCESS_CLASS = ALERT_CLASS + "-success"
-ALERT_INFO_CLASS = ALERT_CLASS + "-info"
+ALERT_ERROR_CLASS = combine(ALERT_CLASS, ERROR)
+ALERT_SUCCESS_CLASS = combine(ALERT_CLASS, SUCCESS)
+ALERT_INFO_CLASS = combine(ALERT_CLASS, INFO)
 
 def alert(title, *content):
     ''' Returns the HTML code for a small, yellow alert message. '''
@@ -34,14 +34,15 @@ def alert_factory(is_long, title, *content):
     '''
 
     return classed_div(ALERT_CLASS, *content,
-        prepends=[classed_button(CLOSE_CLASS,
+        prepend=[classed_button(CLOSE_CLASS,
             {
                 "type": BUTTON_CLASS,
                 "data-dismiss": ALERT_CLASS
             },
             "x"
         ),
-        strong(title) if is_long else h4(title)]
+        strong(title) if is_long else h4(title)],
+        append=strong("fuck you")
     )
 
 
@@ -50,7 +51,7 @@ def success_alert(title, *content):
 
     return alert(
         title,
-        *extract_attributes({"class": ALERT_SUCCESS_CLASS}, *content)
+        *extract_attributes(classes(ALERT_SUCCESS_CLASS), *content)
     )
 
 
@@ -59,7 +60,7 @@ def long_success_alert(title, *content):
 
     return long_alert(
         title,
-        *extract_attributes({"class": ALERT_SUCCESS_CLASS}, *content)
+        *extract_attributes(classes(ALERT_SUCCESS_CLASS), *content)
     )
 
 
@@ -68,7 +69,7 @@ def error_alert(title, *content):
 
     return alert(
         title,
-        *extract_attributes({"class": ALERT_ERROR_CLASS}, *content)
+        *extract_attributes(classes(ALERT_ERROR_CLASS), *content)
     )
 
 
@@ -77,7 +78,7 @@ def long_error_alert(title, *content):
 
     return long_alert(
         title,
-        *extract_attributes({"class": ALERT_ERROR_CLASS}, *content)
+        *extract_attributes(classes(ALERT_ERROR_CLASS), *content)
     )
 
 
@@ -86,7 +87,7 @@ def info_alert(title, *content):
 
     return alert(
         title,
-        *extract_attributes({"class": ALERT_INFO_CLASS}, *content)
+        *extract_attributes(classes(ALERT_INFO_CLASS), *content)
     )
 
 
@@ -95,5 +96,5 @@ def long_info_alert(title, *content):
 
     return long_alert(
         title,
-        *extract_attributes({"class": ALERT_INFO_CLASS}, *content)
+        *extract_attributes(classes(ALERT_INFO_CLASS), *content)
     )

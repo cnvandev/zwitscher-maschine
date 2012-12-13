@@ -1,15 +1,15 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes, classed_div, classed_button
+from common import extract_attributes, classed_div, classed_button, classes, combine
 
 # Convenience methods for generating Twitter Bootstrap button group HTML code.
 # http://twitter.github.com/bootstrap/components.html#buttonGroup for examples.
 
 BUTTON_CLASS = "btn"
-BUTTON_GROUP_CLASS = BUTTON_CLASS + "-group"
-BUTTON_TOOLBAR_CLASS = BUTTON_CLASS + "-toolbar"
-BUTTON_GROUP_VERTICAL_CLASS = BUTTON_GROUP_CLASS + "-vertical"
+BUTTON_GROUP_CLASS = combine(BUTTON_CLASS, "group")
+BUTTON_TOOLBAR_CLASS = combine(BUTTON_CLASS, "toolbar")
+BUTTON_GROUP_VERTICAL_CLASS = combine(BUTTON_GROUP_CLASS, "vertical")
 
 # *sigh* button() is already taken by straight HTML buttons. Jerks.
 def zm_button(text):
@@ -28,8 +28,8 @@ def button_toolbar(*content):
 
     return classed_div(BUTTON_TOOLBAR_CLASS, *content)
 
-def verticalbutton_group(*content):
+def vertical_button_group(*content):
     ''' Returns the HTML code for a vertical button group that contains the
     given buttons. '''
 
-    return button_group({"class": BUTTON_GROUP_CLASS}, *content)
+    return button_group(classes(BUTTON_GROUP_CLASS), *content)
