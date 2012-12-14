@@ -33,3 +33,7 @@ def vertical_button_group(*content):
     given buttons. '''
 
     return button_group(classes(BUTTON_GROUP_CLASS), *content)
+
+def link_button(*content):
+
+    return classed_a(BUTTON_CLASS, *content)

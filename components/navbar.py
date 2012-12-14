@@ -1,7 +1,9 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from common import extract_attributes, classed_a, classed_ul, classed_li, classed_input, classed_form, classed_p, combine
+from common import extract_attributes, classed_a, classed_ul, classed_li, classed_input, classed_form, classed_p, combine, classed_span
+from buttons import BUTTON_CLASS
+from dropdowns import DROPDOWN_CLASS
 
 # Convenience methods for generating Twitter Bootstrap navigation bars.
 # http://twitter.github.com/bootstrap/components.html#navbar
@@ -9,6 +11,9 @@ from common import extract_attributes, classed_a, classed_ul, classed_li, classe
 NAVBAR_CLASS = "navbar"
 NAVBAR_INNER_CLASS = combine(NAVBAR_CLASS, "inner")
 NAVBAR_INVERSE_CLASS = combine(NAVBAR_CLASS, "inverse")
+NAVBAR_FIXED_TOP_CLASS = combine(NAVBAR_CLASS, "fixed", "top")
+NAVBAR_BUTTON_CLASS = combine(BUTTON_CLASS, NAVBAR_CLASS)
+
 BRAND_CLASS = "brand"
 
 PULL_LEFT_CLASS = combine("pull", "left")
@@ -20,8 +25,14 @@ NAVBAR_TEXT_CLASS = combine(NAVBAR_FORM_CLASS, "text")
 SEARCH_INPUT_CLASS = combine("search", "query")
 
 NAV_CLASS = "nav"
+NAV_HEADER_CLASS = combine(NAV_CLASS, "header")
+
 DIVIDER_CLASS = combine("divider", "vertical")
 
+ICON_BAR_CLASS = combine("icon", "bar")
+
+COLLAPSE = "collapse"
+COLLAPSING_NAV_CLASS = combine(NAV, COLLAPSE)
 
 
 def navbar(*content):
@@ -64,13 +75,32 @@ def nav_divider():
     return classed_li(DIVIDER_CLASS, *content)
 
 
-def form_left(*content):
+def nav_form(*content):
     ''' A wrapper for form elements (like login, search, etc.) for use in
     navigation bars.
 
     '''
 
     return classed_form(NAVBAR_FORM_CLASS, *content)
+
+
+def nav_dropdown(title, *content):
+    ''' A button to open a dropdown menu in a navbar. Give it a menu in the
+    content for it to actually work.
+    WARNING: Unlike other functions, this one can't take extra classes right
+    now :(
+
+    '''
+
+    return classed_li(DROPDOWN_CLASS,
+        classed_a(
+            combine(DROPDOWN_CLASS, "toggle"),
+            toggle(DROPDOWN_CLASS),
+            title,
+            b(class="caret"),
+            *content
+        )
+    )
 
 
 def search_input(*content):
@@ -84,16 +114,56 @@ def search_input(*content):
 
 
 def search_form(*content):
-    ''' A wrapper around search input elements.
-
-    '''
+    ''' A wrapper around search input elements. '''
 
     return classed_form(NAVBAR_SEARCH_CLASS, *content)
 
 
 def navbar_text(*content):
-    ''' A wrapper for text elements in navigation bars.
+    ''' A wrapper for text elements in navigation bars. '''
 
-    '''
+    return classed_p(NAVBAR_TEXT_CLASS, *content)
 
-    return classed_p(, *content)
+
+def navbar_button(*content):
+    ''' A button for use in the navigation bar. '''
+
+    return classed_a([BUTTON_CLASS, NAVBAR_BUTTON_CLASS], *content)
+
+
+def icon_bar():
+    ''' A visual "bar" in CSS. '''
+
+    return classed_span(ICON_BAR_CLASS)
+
+
+def collapsed_nav_button():
+    ''' A button that looks nice and touchable that appears when the navigation
+    bar is collapsed. '''
+
+    return navbar_button(icon_bar(), icon_bar(), icon_bar())
+
+
+def collapsing_nav(*content):
+    ''' A section in the navigation bar that will collapse if room is no longer
+    available. '''
+
+    return classed_div([COLLAPSING_NAV_CLASS, COLLAPSE], *content)
+
+
+def responsive_nav(dem_classes, dat_brand, *content):
+    ''' A shortcut for a semi-standard form of "responsive" navigation. The
+    brand element will always stay visible, the rest of the content will
+    collapse under a touchable button if the screen size is too small. '''
+
+    return navbar(classes(dem_classes)
+            container(
+                collapsed_nav_button()
+                    dat_brand,
+                    collapsing_nav(
+                        nav_group(
+                            *content
+                        )
+                    ) + comment("/.nav-collapse")
+            )
+        )

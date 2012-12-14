@@ -6,6 +6,11 @@ A Twitter Bootstrap HTML generator. Using the functional style I use for Dynamo
 use Twitter Bootstrap elements. Right now it's fairly bare-bones, I'm not sure
 what the API should really look like, and it's really simple as it is right now.
 
+The ultimate goal for this library is to have one line of code (or less!) for
+every visible object in the final Twitter Bootstrap page. Knowing the function
+names, it should come easily how to write Twitter Bootstrap HTML and it the
+output should make sense, as much as possible.
+
 Usage
 -----
 In any case, you can quickly output HTML code for Twitter Bootstrap-based sites

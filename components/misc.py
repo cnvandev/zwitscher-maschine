@@ -45,12 +45,3 @@ def container(*content):
     ''' Returns the HTML code for a basic div container. '''
 
     return classed_div(CONTAINER_CLASS, *content)
-
-
-def component_scripts(*components):
-
-    return *[script(src="../assets/js/bootstrap-" + component + ".js") for component in components]
-
-def component_css(*components):
-
-    return *[link(href="../assets/css/bootstrap-" + component + ".css", rel="stylesheet"), for component in components]

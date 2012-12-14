@@ -30,13 +30,19 @@ def dropdown_menu(*items):
 def menu_item(*content):
     ''' Returns the HTML code for a menu item in a dropdown menu. '''
 
-    return classed_li("", untabbable(), *content)
+    return classed_li(*content)
 
 
 def divider(*content):
     ''' Returns the HTML code for divider in a dropdown menu. '''
 
     return classed_li(DIVIDER_CLASS, *content)
+
+
+def nav_header(*content):
+    ''' A header in a navigation list. '''
+
+    return classed_li(NAV_HEADER_CLASS, *content)
 
 
 def submenu(text, url, *items):
