@@ -1,5 +1,7 @@
-from ..dynamo import *
-from components.misc import *
+import sys
+sys.path.append("../dynamo")
+from dynamo import *
+from ..components.misc import *
 from navbar import NAVBAR_INVERSE_CLASS, NAVBAR_FIXED_TOP_CLASS, navbar
 from structure import *
 
@@ -12,16 +14,15 @@ print html({"lang": "en"},
             "viewport": "view=device-width, initial-scale=1.0",
             "description": "",
             "author": ""
-        })
-
+        }),
         styles("../assets/css",
         '''
             body {
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
             }
         ''',
-        "responsive")
-        html5_shim()
+        "responsive"),
+        html5_shim(),
         fav_touch_icons("../assets/ico")
     ),
     body(
@@ -32,7 +33,7 @@ print html({"lang": "en"},
             li(a("About", href="#about")),
             li(a("Contact", href="#contact")),
 
-            nav_dropdown("Dropdown"
+            nav_dropdown("Dropdown",
                 dropdown_menu(
                     li(a("Action", href="#")),
                     li(a("Anotion action", href="#")),
@@ -44,23 +45,31 @@ print html({"lang": "en"},
                 )
             ),
             nav_form(classes("pull-right"),
-                Input({"class": "span2", "type": "text", "placeholder": "Email")),
-                Input({"class": "span2", "type": "text", "placeholder": "Password")),
+                Input({"class": "span2", "type": "text", "placeholder": "Email"}),
+                Input({"class": "span2", "type": "text", "placeholder": "Password"}),
                 zm_button({"type": "submit"}, "Sign in")
             )
-        )
+        ),
 
         container(
-            comment("Example row of columns")
-            *[
-                grid_row(
-                    column_span(4,
-                        h2("Heading"),
-                        p("Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."),
-                        p(link_button("View details &raquo;", href="#"))
-                    )
-                ) for number in [1, 2, 3]
-            ],
+            comment("Example row of columns"),
+            grid_row(
+                column_span(4,
+                    h2("Heading"),
+                    p("Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."),
+                    p(link_button("View details &raquo;", href="#"))
+                ),
+                column_span(4,
+                    h2("Heading"),
+                    p("Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."),
+                    p(link_button("View details &raquo;", href="#"))
+                ),
+                column_span(4,
+                    h2("Heading"),
+                    p("Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."),
+                    p(link_button("View details &raquo;", href="#"))
+                )
+            ),
             hr(),
             footer(p("&copy; Company 2012"))
         ) + comment("/.container"),

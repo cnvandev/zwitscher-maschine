@@ -1,5 +1,8 @@
-from ..dynamo import *
-from components.misc import *
+import sys
+sys.path.append("../dynamo")
+from dynamo import *
+sys.path.append("../components")
+from misc import *
 from navbar import NAVBAR_INVERSE_CLASS, NAVBAR_FIXED_TOP_CLASS, navbar
 from structure import *
 
