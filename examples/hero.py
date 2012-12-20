@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../dynamo")
 from dynamo import *
-from zwitscher-maschine.components.misc import *
+from ..zwitscher_maschine.components.misc import *
 from navbar import NAVBAR_INVERSE_CLASS, NAVBAR_FIXED_TOP_CLASS, navbar
 from structure import *
 
