@@ -38,7 +38,7 @@ def close():
     ''' Returns the HTML code for an X that indicates an element can be closed
     (like a window.) '''
 
-    return classed_a(CLOSE_CLASS, href("#"), "&times;"))
+    return classed_a(CLOSE_CLASS, href("#"), "&times;")
 
 
 def container(*content):

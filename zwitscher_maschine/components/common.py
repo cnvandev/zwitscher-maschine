@@ -112,6 +112,10 @@ def classed_a(dem_classes, *content, **kwargs):
     return classed_open_tag("a", dem_classes, *content, **kwargs)
 
 
+def classed_b(dem_classes, *content, **kwargs):
+    return classed_open_tag("b", dem_classes, *content, **kwargs)
+
+
 def classed_p(dem_classes, *content, **kwargs):
     return classed_open_tag("p", dem_classes, *content, **kwargs)
 

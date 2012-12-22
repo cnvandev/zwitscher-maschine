@@ -32,7 +32,7 @@ DIVIDER_CLASS = combine("divider", "vertical")
 ICON_BAR_CLASS = combine("icon", "bar")
 
 COLLAPSE = "collapse"
-COLLAPSING_NAV_CLASS = combine(NAV, COLLAPSE)
+COLLAPSING_NAV_CLASS = combine(NAV_CLASS, COLLAPSE)
 
 
 def navbar(*content):
@@ -97,7 +97,7 @@ def nav_dropdown(title, *content):
             combine(DROPDOWN_CLASS, "toggle"),
             toggle(DROPDOWN_CLASS),
             title,
-            b(class="caret"),
+            classed_b("caret"),
             *content
         )
     )
@@ -156,14 +156,14 @@ def responsive_nav(dem_classes, dat_brand, *content):
     brand element will always stay visible, the rest of the content will
     collapse under a touchable button if the screen size is too small. '''
 
-    return navbar(classes(dem_classes)
+    return navbar(classes(dem_classes),
             container(
-                collapsed_nav_button()
-                    dat_brand,
-                    collapsing_nav(
-                        nav_group(
-                            *content
-                        )
-                    ) + comment("/.nav-collapse")
+                collapsed_nav_button(),
+                dat_brand,
+                collapsing_nav(
+                    nav_group(
+                        *content
+                    )
+                ) + comment("/.nav-collapse")
             )
         )
